@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageView
+        android:src="@drawable/alphaflight_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1" />
+    <TextView
+        android:id="@+id/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:layout_marginTop="50dip" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center|bottom">
+        <Button
+            android:id="@+id/LoginButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/LoginButton"
+            android:layout_gravity="bottom" />
+        <Button
+            android:text="@string/CreateOverlay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/OverlayButton"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+</LinearLayout>
