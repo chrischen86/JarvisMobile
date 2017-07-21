@@ -1,10 +1,12 @@
-﻿using Jarvis.Core.Converters;
+﻿using Android.Runtime;
+using Jarvis.Core.Converters;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Jarvis.Core.Models.AlphaFlight
 {
+    [Preserve(AllMembers = true)]
     [DataContract]
     public class Zone
     {

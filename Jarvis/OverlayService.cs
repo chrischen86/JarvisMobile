@@ -28,16 +28,24 @@ namespace Jarvis
 
         private bool _keepPolling = true;
         private List<Zone> _zones = new List<Zone>();
+        private int _zone = 0;
+        private string _userId;
 
         public override IBinder OnBind(Intent intent)
         {
             return null;
         }
 
+        [return: GeneratedEnum]
+        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
+        {
+            _userId = intent.GetStringExtra("UserId");
+            return base.OnStartCommand(intent, flags, startId);
+        }
+
         public override void OnCreate()
         {
             base.OnCreate();
-
             _strikeTableManager = new StrikeTableManager();
 
             var param = new WindowManagerLayoutParams(
@@ -75,10 +83,32 @@ namespace Jarvis
                 checkButton.SetImageResource(_keepPolling ? Resource.Drawable.ic_sync : Resource.Drawable.ic_sync_disabled);
             };
 
+            SetupNodeButtons();
+
             _windowManager = GetSystemService(WindowService).JavaCast<IWindowManager>();
             _windowManager.AddView(_layout, param);
 
             PollZones();
+        }
+
+        private void SetupNodeButtons()
+        {
+            for (var node = 1; node <= 10; node++)
+            {
+                var resource = GetResourceByNumber(node);
+                var nodeButton = _layout.FindViewById<Button>(resource);
+                var nodeValue = node;
+                nodeButton.Click += (sender, e) => NodeButton_Click(sender, e, nodeValue);
+            }
+        }
+
+        private async void NodeButton_Click(object sender, EventArgs e, int node)
+        {
+            if (_zone <= 0)
+            {
+                return;
+            }
+            await _strikeTableManager.ClaimNode(_zone, node, _userId);
         }
 
         public override void OnDestroy()
@@ -134,6 +164,7 @@ namespace Jarvis
         {
             var zoneButton = _layout.FindViewById<Button>(Resource.Id.zoneButton);
             zoneButton.Text = string.Format("Zone {0}", zone.ZoneNumber);
+            _zone = zone.ZoneNumber;
         }
 
         private void UpdateNodes(Zone zone)

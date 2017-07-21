@@ -53,6 +53,10 @@ namespace Jarvis.Helpers
 
         public User GetUser()
         {
+            if (!AccountExists())
+            {
+                return null;
+            }
             return new User
             {
                 Id = _sharedPreferences.GetString(UserId, string.Empty),

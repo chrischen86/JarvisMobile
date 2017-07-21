@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using Android.Runtime;
+using System.Runtime.Serialization;
 
 namespace Jarvis.Core.Models
 {
+    [Preserve(AllMembers = true)]
     [DataContract]
     public class User
     {

@@ -4,4 +4,5 @@
   <string name="ApplicationName">Jarvis</string>
   <string name="LoginButton">Login with Slack</string>
   <string name="CreateOverlay">Start overlay</string>
+  <string name="DestroyOverlay">Stop overlay</string>
 </resources>

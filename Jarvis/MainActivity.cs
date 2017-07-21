@@ -37,6 +37,17 @@ namespace Jarvis
             {
                 StartOverlay();
             };
+
+            var stopOverlayButton = FindViewById<Button>(Resource.Id.StopOverlayButton);
+            stopOverlayButton.Click += delegate
+            {
+                StopOverlay();
+            };
+        }
+
+        private void StopOverlay()
+        {
+            StopService(new Intent(this, typeof(OverlayService)));
         }
 
         protected override void OnResume()
@@ -124,7 +135,16 @@ namespace Jarvis
                 Toast.MakeText(this, "Overlay permissions have not been granted", ToastLength.Short).Show();
                 return;
             }
+
+            var user = _accountManager.GetUser();
+            if (user == null)
+            {
+                Toast.MakeText(this, "Please login first.", ToastLength.Short).Show();
+                return;
+            }
+
             var intent = new Intent(this, typeof(OverlayService));
+            intent.PutExtra("UserId", user.Id);
             StartService(intent);
             //Finish();
         }

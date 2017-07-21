@@ -23,5 +23,10 @@ namespace Jarvis.Core.Services
         {
             return Api.GetMapping();
         }
+
+        public Task<Strike> ClaimNode(int zone, int node, string userId)
+        {
+            return Api.ClaimNode(zone, node, userId);
+        }
     }
 }

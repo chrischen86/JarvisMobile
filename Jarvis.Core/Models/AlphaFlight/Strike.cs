@@ -1,9 +1,11 @@
-﻿using System.Runtime.Serialization;
+﻿using Android.Runtime;
+using System.Runtime.Serialization;
 
 namespace Jarvis.Core.Models.AlphaFlight
 {
+    [Preserve(AllMembers = true)]
     [DataContract]
-    public class Strike
+    public class Strike : ApiResponseBase
     {
         [DataMember(Name = "id")]
         public string Id { get; set; }
