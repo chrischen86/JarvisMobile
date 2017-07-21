@@ -11,7 +11,7 @@ using Jarvis.Helpers;
 
 namespace Jarvis
 {
-    [Activity(Label = "Jarvis", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Jarvis", MainLauncher = true, Icon = "@drawable/ic_launcher")]
     public class MainActivity : Activity
     {
         private static readonly TaskScheduler UIScheduler = TaskScheduler.FromCurrentSynchronizationContext();
@@ -126,7 +126,7 @@ namespace Jarvis
             }
             var intent = new Intent(this, typeof(OverlayService));
             StartService(intent);
-            Finish();
+            //Finish();
         }
     }
 }

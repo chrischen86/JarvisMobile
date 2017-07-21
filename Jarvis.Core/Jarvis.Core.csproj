@@ -39,14 +39,21 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AlphaFlight\IStrikeTableApi.cs" />
+    <Compile Include="Api\AlphaFlight\StrikeTableApi.cs" />
+    <Compile Include="Converters\StringBooleanConverter.cs" />
     <Compile Include="Api\Slack\IUsersIdentityApi.cs" />
     <Compile Include="Api\Slack\UsersIdentityApi.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\AlphaFlight\Node.cs" />
     <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\AlphaFlight\Strike.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\AlphaFlight\Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IdentityManager.cs" />
+    <Compile Include="Services\StrikeTableManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
